@@ -1,0 +1,18 @@
+spring:
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+# mongoDB
+  data:
+    mongodb:
+      authentication-database: admin
+      database: order
+      host: localhost
+      port: 27017
+      username: admin
+      password: admin
+
+grpc:
+  server:
+    port: -1 # disable grpc server
