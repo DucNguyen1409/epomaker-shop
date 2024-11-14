@@ -14,6 +14,7 @@ public class PaymentMapper {
         payment.setSellerId(orderResponse.getSellerId());
         payment.setPaymentMethod(orderResponse.getPaymentMethod());
         payment.setPaymentStatus("SUCCESS");
+        payment.setPaymentStatusNotes("Successfully paid by: " + orderResponse.getPaymentMethod());
 
         return payment;
     }

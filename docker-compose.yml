@@ -13,6 +13,19 @@ services:
     volumes:
       - mongo_data:/data/db
 
+  # MongoDB express
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: admin
+      ME_CONFIG_MONGODB_SERVER: mongodb  # MongoDB service name
+    depends_on:
+      - mongodb
+
   # ActiveMQ service
   activemq:
     image: rmohr/activemq:latest

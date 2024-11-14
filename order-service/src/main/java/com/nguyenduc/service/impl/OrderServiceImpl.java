@@ -6,6 +6,7 @@ import com.nguyenduc.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -35,6 +36,7 @@ public class OrderServiceImpl implements OrderService {
 
         // update order status
         orderById.setOrderStatus(status);
+        orderById.setUpdateTimestamp(new Timestamp(System.currentTimeMillis()).toString());
         orderRepository.save(orderById);
         return orderById;
     }

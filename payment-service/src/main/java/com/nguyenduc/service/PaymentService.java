@@ -10,9 +10,7 @@ import com.nguyenduc.repository.PaymentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
-import java.util.function.Consumer;
 
 @Service
 @RequiredArgsConstructor
@@ -41,7 +39,7 @@ public class PaymentService {
         OrderStatus orderStatus = new OrderStatus();
         orderStatus.setOrderId(orderResponse.getOrderId());
         orderStatus.setOrderStatus(OrderStates.ORDER_PAID);
-        orderStatus.setMessage("Successfully paid by " + payment.getPaymentMethod());
+        orderStatus.setMessage("Successfully paid by: " + payment.getPaymentMethod());
         return orderStatus;
     };
 }
