@@ -18,7 +18,7 @@ services:
     image: mongo-express:latest
     container_name: mongo-express
     ports:
-      - "8081:8081"
+      - "8081:8081" # access MongoDB express via http://localhost:8081
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: admin
       ME_CONFIG_MONGODB_ADMINPASSWORD: admin
@@ -41,6 +41,33 @@ services:
     volumes:
       - activemq_data:/data
 
+  # PostgresDB
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: restaurant
+    volumes:
+      - postgress-data:/var/lib/postgresql/data
+
+  # Pgadmin service
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    ports:
+      - "5050:80" # access pgAdmin via http://localhost:5050
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    depends_on:
+      - postgres
+
 volumes:
   mongo_data:
   activemq_data:
+  postgress-data:
