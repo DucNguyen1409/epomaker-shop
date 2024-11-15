@@ -27,10 +27,10 @@ public class PaymentService {
         // persist Payment
         paymentRepository.save(payment);
 
-        // publish payment to [payment-updates]
+        // publish payment to [restaurant-updates]
         paymentPublisher.publish(payment);
 
-        // publish order paid to [order-updates]
+        // publish order PAID to [order-updates]
         paymentPublisher.publish(buildOrderStatus.apply(orderResponse, payment));
     }
 

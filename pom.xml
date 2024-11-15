@@ -12,5 +12,6 @@
 		<module>order-service</module>
 		<module>shared</module>
         <module>payment-service</module>
-    </modules>
+		<module>restaurant-service</module>
+	</modules>
 </project>

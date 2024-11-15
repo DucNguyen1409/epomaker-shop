@@ -1,0 +1,25 @@
+spring:
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/restaurant
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+grpc:
+  server:
+    port: -1 # disable grpc server
+
+logging:
+  level:
+    com.nguyenduc.*: DEBUG
