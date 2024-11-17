@@ -4,12 +4,14 @@ import com.nguyenduc.model.Order;
 import com.nguyenduc.repository.OrderRepository;
 import com.nguyenduc.service.OrderService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.Objects;
 import java.util.Optional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
@@ -29,6 +31,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order updateOrderStatusById(String orderId, String status) throws Exception {
+        log.info("{}: updateOrderStatusById: {} - {}", "", orderId, status);
         Order orderById = getOrderById(orderId);
         if (Objects.isNull(orderById.getOrderId())) {
             throw new Exception("Not found with orderId: " + orderId);

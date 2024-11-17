@@ -36,10 +36,9 @@ public class PaymentService {
 
     private final BiFunction<Order, Payment, OrderStatus> buildOrderStatus =
             (orderResponse, payment) -> {
-        OrderStatus orderStatus = new OrderStatus();
-        orderStatus.setOrderId(orderResponse.getOrderId());
-        orderStatus.setOrderStatus(OrderStates.ORDER_PAID);
-        orderStatus.setMessage("Successfully paid by: " + payment.getPaymentMethod());
-        return orderStatus;
-    };
+                OrderStatus orderStatus = new OrderStatus();
+                orderStatus.setOrderId(orderResponse.getOrderId());
+                orderStatus.setOrderStatus(OrderStates.ORDER_PAID);
+                return orderStatus;
+            };
 }
